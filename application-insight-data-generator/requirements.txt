@@ -1,0 +1,3 @@
+argparse
+python-dotenv
+opencensus-ext-azure
