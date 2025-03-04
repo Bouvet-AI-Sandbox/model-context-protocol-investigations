@@ -3,6 +3,7 @@ from mcp.server.fastmcp import FastMCP, Context
 import requests
 from dotenv import load_dotenv
 import os
+from pydantic import Field
 
 # Create an MCP server
 mcp = FastMCP("Demo",log_level="DEBUG",debug=True, port=8080)
@@ -13,8 +14,12 @@ APPLICATION_INSIGHT_API_KEY = os.getenv("APPLICATION_INSIGHT_API_KEY")
 
 # Define a tool for the MCP server
 @mcp.tool()
-def user_activity(userId: str, duration: str, ctx: Context) -> str:
-    """Get a list of all http requests for a specific user in a given duration. The duration should be in ISO8601 format and has default value P1D (1 day)"""
+def user_activity(
+        userId: str = Field(description="The email adress of the user to get activity for"), 
+        duration: str= Field(description="Duration to get activity for in ISO8601 format. Has default value P1D (1 day)", default="P1D"),
+        ctx: Context= Field(description=""),
+    ) -> str:
+    """Get a list of all http requests for a specific user in a given duration. """
     return _app_insight_call(userId, duration,ctx)
 
 
@@ -31,7 +36,7 @@ def _app_insight_call(userId: str, duration: str, ctx: Context) -> str:
     # Construct the REST API URL
     url = f"https://api.applicationinsights.io/v1/apps/{APPLICATION_INSIGHT_APP_ID}/query"
 
-    ctx.info(f"Preparing request to {url}")
+    ctx.debug(f"Preparing request to {url}")
 
     # Set the parameters and headers, including the API key
     params = {
