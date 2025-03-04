@@ -2,7 +2,8 @@
 from mcp.server.fastmcp import FastMCP
 
 # Create an MCP server
-mcp = FastMCP("Demo")
+
+mcp = FastMCP("Demo",log_level="DEBUG",debug=True, port=8080)
 
 # Add an addition tool
 @mcp.tool()
@@ -15,3 +16,9 @@ def add(a: int, b: int) -> int:
 def get_greeting(name: str) -> str:
     """Get a personalized greeting"""
     return f"Hello, {name}!"
+
+
+#if __name__ == "__main__":
+#    mcp.run()
+# Run with mcp run server.py --transport sse
+# Open MCP Inspector with npx @modelcontextprotocol/inspector
