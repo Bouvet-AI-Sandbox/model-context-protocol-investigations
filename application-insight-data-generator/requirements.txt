@@ -1,3 +1,7 @@
-argparse
+azure-monitor-opentelemetry
+azure-core
+requests
+opentelemetry-sdk
+opentelemetry-exporter-otlp
+opentelemetry-instrumentation-requests
 python-dotenv
-opencensus-ext-azure
