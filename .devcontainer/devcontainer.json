@@ -9,14 +9,15 @@
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 		  "version": "lts"
-		}
-	  }
+		},
+		"ghcr.io/jsburckhardt/devcontainer-features/uv:1":{}
+	  },
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "pip install mcp[cli]"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
