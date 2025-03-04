@@ -50,7 +50,7 @@ def generate_web_request():
         span.set_attribute("http.method", "GET")
         span.set_attribute("http.url", url)
         span.set_attribute("http.status_code", status)
-        span.set_attribute("response_time", response_time)
+        span.set_attribute("duration", response_time*1000)
         span.set_attribute("User.AuthenticatedUserId", "dagfinn.parnas@bouvet.no")
         span.set_attribute("AuthenticatedUserId", "dagfinn.parnas@bouvet.no")
 
