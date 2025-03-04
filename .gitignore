@@ -1,2 +1,3 @@
 application-insight-data-generator/.env
 application-insight-query-for-user/.env
+/mcp-server-app-insight/__pycache__
