@@ -57,7 +57,8 @@ def _app_insight_call(userId: str, duration: str, ctx: Context) -> str:
         print("Error:", response.status_code, response.text)
         return None
 
-#if __name__ == "__main__":
-#    mcp.run()
-# Run with mcp run server.py --transport sse
-# Open MCP Inspector with npx @modelcontextprotocol/inspector
+if __name__ == "__main__":
+    mcp.run(transport="sse")
+
+# alternatively run with Run with mcp run server.py --transport sse
+# and Open MCP Inspector with npx @modelcontextprotocol/inspector
