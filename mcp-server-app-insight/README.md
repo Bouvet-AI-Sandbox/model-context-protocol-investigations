@@ -1,3 +1,6 @@
 ## Run MCP server with sse transport
-`mcp run server.py --transport sse`
+`python server.py`
 
+or
+
+`mcp run server.py --transport sse` 
