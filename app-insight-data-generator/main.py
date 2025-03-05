@@ -10,7 +10,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
 from azure.monitor.opentelemetry import configure_azure_monitor
-from opentelemetry.trace import SpanKind
+from opentelemetry.trace import SpanKind, StatusCode
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -43,24 +43,40 @@ def generate_web_request():
     status = random.choice(statuses)
     response_time = round(random.uniform(0.1, 5.0), 2)  # Simulate response times
 
-    with tracer.start_as_current_span("trace_message") as span:
-        logger.info(f"Trace message test")
-    
     with tracer.start_as_current_span("simulated_request", kind=SpanKind.SERVER) as span:
         span.set_attribute("http.method", "GET")
         span.set_attribute("http.url", url)
         span.set_attribute("http.status_code", status)
         span.set_attribute("duration", response_time*1000)
-        span.set_attribute("User.AuthenticatedUserId", "dagfinn.parnas@bouvet.no")
-        span.set_attribute("AuthenticatedUserId", "dagfinn.parnas@bouvet.no")
+        span.set_attribute("User.AuthenticatedUserId", "kjarisk")
+
+        if status == 500:
+            try:
+                raise ValueError("Simulated error for logging to Application Insights exceptions table")
+            except Exception as e:
+                    span.record_exception(e)
+        elif status == 400: 
+            logger.info(f"Bad request from user likely due to outdated client software.")
+        
 
         logger.info(f"Request to {url} | Status: {status} | Response Time: {response_time}s")
 
     time.sleep(response_time)
 
+# Function to deliberately generate and log an exception for testing
+def generate_exception():
+    try:
+        raise ValueError("Simulated error for logging to Application Insights exceptions table")
+    except Exception as e:
+        logger.error("Caught exception in generate_exception", exc_info=True)
+        with tracer.start_as_current_span("logged_exception", kind=SpanKind.INTERNAL) as span:
+            span.record_exception(e)
+            span.set_status(StatusCode.ERROR)
+
 # Run test data generation loop
 if __name__ == "__main__":
     logger.info("Starting test web request generator...")
     
+
     for _ in range(20):  # Generate 10 test requests
         generate_web_request()
