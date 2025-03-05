@@ -24,14 +24,27 @@ def user_activity(
 
 
 def _app_insight_call(userId: str, duration: str, ctx: Context) -> str:
-    # Define your KQL query and timespan (e.g., last 1 day)
+    # Define KQL query. We're merging in exception and traces into a single line item
     query = f"""
-    requests 
-    | where customDimensions['User.AuthenticatedUserId'] == "{userId}"
-    | project timestamp, name, url, resultCode, duration
+        requests
+        | where customDimensions['User.AuthenticatedUserId'] == "{userId}"        
+        | join kind=leftouter (
+            exceptions
+            | project operation_Id, outerType, outerMessage, innermostType, innermostMessage, exceptionStackTrace=details[0].rawStack
+        ) on operation_Id
+        | join kind=leftouter (
+            traces
+            | project operation_Id, traceMessage = message, traceSeverityLevel = severityLevel, traceFromPath=customDimensions["code.filepath"], traceFromFunction=strcat(tostring(customDimensions["code.function"]), ":",tostring(customDimensions["code.lineno"]))
+        ) on operation_Id
+        | project timestamp, name,url, resultCode, duration, outerType, outerMessage, innermostType, innermostMessage, exceptionStackTrace, traceMessage, traceSeverityLevel, traceFromPath, traceFromFunction
     """
-    timespan = "P1D"  # ISO 8601 duration format for 1 day
 
+    # Old simple query 
+    #query = f"""
+    #requests 
+    #| where customDimensions['User.AuthenticatedUserId'] == "{userId}"
+    #| project timestamp, name, url, resultCode, duration
+    #"""
 
     # Construct the REST API URL
     url = f"https://api.applicationinsights.io/v1/apps/{APPLICATION_INSIGHT_APP_ID}/query"
@@ -41,7 +54,7 @@ def _app_insight_call(userId: str, duration: str, ctx: Context) -> str:
     # Set the parameters and headers, including the API key
     params = {
         "query": query,
-        "timespan": timespan
+        "timespan": duration
     }
     headers = {
         "x-api-key": APPLICATION_INSIGHT_API_KEY
