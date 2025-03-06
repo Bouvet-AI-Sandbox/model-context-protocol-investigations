@@ -13,9 +13,9 @@ GITHUB_PERSONAL_ACCESS_TOKEN=github_pat_...
 
 Add to environment variable through
 ```
-set +a
-source .env
 set -a
+source .env
+set +a
 ```
 
 ## Configure LLM

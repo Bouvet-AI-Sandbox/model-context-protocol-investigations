@@ -18,9 +18,9 @@ APPLICATION_INSIGHT_API_KEY=...
 
 Add to environment variable through
 ```
-set +a
-source .env
 set -a
+source .env
+set +a
 ```
 
 ### GitHub - MCP server
