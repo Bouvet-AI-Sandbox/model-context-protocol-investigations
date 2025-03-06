@@ -10,3 +10,5 @@ app-insight-data-generator/.env
 app-insight-query-for-user/.env
 mcp-client-claude-code/.env
 mcp-client-goose/.env
+mcp-server-azure-devops/.env
+.devcontainer/devcontainer_values.json
