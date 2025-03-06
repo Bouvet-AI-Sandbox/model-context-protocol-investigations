@@ -1,0 +1,6 @@
+mcp
+requests
+python-dotenv
+pydantic
+pytest
+sseclient-py
