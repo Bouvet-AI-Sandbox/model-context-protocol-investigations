@@ -9,6 +9,11 @@ MCP follows a client-server architecture where:
 - **MCP client**: Different types such as LLM chat clients, Code copilots in IDEs and agent frameworks
 - **MCP Servers**: Lightweight programs that expose specific capabilities through the standardized Model Context Protocol
 
+![MCP overview](https://github.com/user-attachments/assets/b91c3aa8-3f83-4464-b86b-f547454d5c65)
+Overview image from [Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic](https://youtu.be/kQmXtrmQ5Zg?si=iX_eDzF3byUmEVuU&t=287)
+
+Note: The MCP client is configured to use one or more LLMs (not shown in the overview image) and the LLM recommends to the MCP client which MCP server tool to use.
+
 ### MCP Servers
 MCP servers can provide:
 - [Tools](https://modelcontextprotocol.io/docs/concepts/tools) - This is the core functionality and provides a set of function call the LLM used by the MCP client can choose to use
@@ -108,7 +113,7 @@ This results in the follow functional calling definition provided to the LLM cho
 ```
 
 ### MCP Clients
-MCP Clients controll the LLM and the end-user interaction (if any). The MCP client is configured with a relevant set of MCP servers. It's up to the LLM to recommend a tool from an MCP server to be used and the MCP client will typically ask the end-user to confirm before initiating the tool call through the MCP server.
+MCP Clients control the LLM and the end-user interaction (if any). The MCP client is configured with a relevant set of MCP servers. It's up to the LLM to recommend a tool from an MCP server to be used and the MCP client will typically ask the end-user to confirm before initiating the tool call through the MCP server.
 
 Additionally, the MCP clients can provide:
 - [Sampling](https://modelcontextprotocol.io/docs/concepts/sampling) - This allows MCP servers to request LLM completions through the MCP client  (not commonly used today)
