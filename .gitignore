@@ -6,3 +6,7 @@ app-github-issues/.env
 mcp-server-app-insight/.env
 __pycache__
 node_modules/
+app-insight-data-generator/.env
+app-insight-query-for-user/.env
+mcp-client-claude-code/.env
+mcp-client-goose/.env
