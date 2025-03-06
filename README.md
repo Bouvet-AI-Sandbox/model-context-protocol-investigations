@@ -14,22 +14,39 @@ Overview image from [Building Agents with Model Context Protocol - Full Workshop
 
 Note: The MCP client is configured to use one or more LLMs (not shown in the overview image) and the LLM recommends to the MCP client which MCP server tool to use.
 
+The Model Context Specifiction is available at [spec.modelcontextprotocol.io](https://spec.modelcontextprotocol.io/specification/2024-11-05/). LLMs can be provided with [https://modelcontextprotocol.io/llms-full.txt](https://modelcontextprotocol.io/llms-full.txt) in order to understand the MCP protocol.
+
+### MCP use cases for AI in Software Delivery Lifecycle
+
+Example use cases:
+- Product backlog management through [GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github)
+- Bug/incident triage through a combination of [GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github) and [mcp-server-app-insight](./mcp-server-app-insight/)
+- Team coordination through [Slack MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/slack)
+- Release and deployment review and triggering of GitHub actions  through [GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github) (will require extensions to MCP server)
+- FinOps evaluations (through establishing MCP server on top of cost data such as [Azure Consumption API](https://learn.microsoft.com/en-us/rest/api/consumption/))
+- Security scanning of code in progress (perform before pull request is established through tools such as Snyk and allow llm to adjust code based on results)
+- Add additional document based context (for example through establishing MCP server on top of [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/overview-major-services))
+- Add Architecture Decision Record  (ADR) context (for example through establishing MCP server on websites containing ADRs at corporate, portfolio or solution level))
+
 ### MCP Servers
 MCP servers can provide:
 - [Tools](https://modelcontextprotocol.io/docs/concepts/tools) - This is the core functionality and provides a set of function call the LLM used by the MCP client can choose to use
 - [Resources](https://modelcontextprotocol.io/docs/concepts/resources) - Similar to tools, but not focused on function calling from an LLM
 - [Prompts](https://modelcontextprotocol.io/docs/concepts/prompts) - Templates suggestions an MCP client expose to the end-user
 
-There are SDKs available to help build MCP servers in different languages, including [Python](https://github.com/modelcontextprotocol/python-sdk), [TypeScript](https://github.com/modelcontextprotocol/typescript-sdk), [Java](https://github.com/modelcontextprotocol/java-sdk) and [Kotlin](https://github.com/modelcontextprotocol/kotlin-sdk). We've explored the [Python SDK](https://github.com/modelcontextprotocol/python-sdk) and recommend it.
+Several SDKs are available to help build MCP servers including [Python](https://github.com/modelcontextprotocol/python-sdk), [TypeScript](https://github.com/modelcontextprotocol/typescript-sdk), [Java](https://github.com/modelcontextprotocol/java-sdk) and [Kotlin](https://github.com/modelcontextprotocol/kotlin-sdk). We've explored the [Python SDK](https://github.com/modelcontextprotocol/python-sdk) and recommend it.
 
 
 The [MCP protocol transport layer](https://modelcontextprotocol.io/docs/concepts/transports) consists of Standard Input/Output (stdio) and Server-Sent Events (SSE), but can easily be extended. Today most MCP client mainly use stdio as transport layer but this will likely change in the near future as reflected in the [MCP roadmap](https://modelcontextprotocol.io/development/roadmap).
 
-As MCP servers are lightweight and often require secrets related to actual end-user, we recommend deploying it locally on a developer computer. It should support stdio and sse and be possible to run in a docker container. 
+As MCP servers are lightweight and often require secrets related to actual end-user, we recommend deploying it locally on a developer computer. It should support both stdio and sse and be possible to run in a docker container. 
 
 Services such as GitHub and Slack will in the future expose MCP servers over HTTPS and use OAuth for authentication and authorization.
 
 Anthropic is [actively working](https://youtu.be/kQmXtrmQ5Zg?si=UY8DM5LAgO6xfq--&t=4955) on an Official MCP Registry API for discovery of MCP servers.
+
+List of MCP servers are available through [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
 
 #### Example MCP Server
 The following show the key elements of an MCP server implementation
@@ -119,9 +136,49 @@ Additionally, the MCP clients can provide:
 - [Sampling](https://modelcontextprotocol.io/docs/concepts/sampling) - This allows MCP servers to request LLM completions through the MCP client  (not commonly used today)
 
 We've investigated the following MCP clients:
-- LLM chat clients - [Codename Goose](https://block.github.io/goose/)
+- LLM chat clients - [Codename Goose](https://block.github.io/goose/) and [LibreChat](https://www.librechat.ai/docs/configuration/librechat_yaml/object_structure/mcp_servers)
 - Code copilots in IDEs -  [Cline](https://github.com/cline/cline), [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview)
 - Agent frameworks - Lanchain (through [langchain-mcp-adapters](https://github.com/langchain-ai/langchain-mcp-adapters))
+
+### MCP Inspector
+Use the [MCP Inspector ](https://modelcontextprotocol.io/docs/tools/inspector)as an interactive developer tool and a method to test MCP servers directly.
+
+Run it through `npx @modelcontextprotocol/inspector`.
+
+## Tutorials & Explanations
+
+**[How To Use Anthropic's Model Context Protocol (MCP) | Setup Tutorial](https://www.youtube.com/watch?v=KiNyvT02HJM)**
+   - Step-by-step guide on setting up and using Anthropic's MCP.
+
+**[Exploring the Model Context Protocol - A Deep Dive into the Future of AI](https://www.youtube.com/watch?v=qFsnme5hUKk)**
+   - A three-part journey exploring MCP's architecture, features, and real-world applications.
+
+**[Anthropic's Model Context Protocol: Add YOUR App to Claude AI!](https://www.youtube.com/watch?v=ww293jeEDT4)**
+   - How to integrate applications with Claude AI using MCP.
+
+**[Claude's New Model Context Protocol is BIG AI NEWS (Hands-on Lab)](https://www.youtube.com/watch?v=lB101dLvhMk)**
+   - Hands-on tutorial for integrating applications with MCP.
+
+**[Model Context Protocol (MCP) Mastery](https://www.youtube.com/playlist?list=PLIJE3P-dybdLgcdE4sg5ihxLn47R7LGmi)**
+   - A playlist covering MCP concepts, implementation, and real-world use cases.
+
+**[(MCP) Model Context Protocol Tutorials](https://www.youtube.com/playlist?list=PLXBVh4y1Y6E3sxwqRH-BE0_UaUJhfVgao)**
+   - Collection of video tutorials on MCP.
+
+**[A Primer to Model Context Protocol (MCP)](https://www.youtube.com/watch?v=yJkOIJR8-y4&utm)**
+   - Breakdown of MCP's functionalities, applications, and future implications.
+
+**[Building a Model Context Protocol (MCP) Server](https://www.youtube.com/watch?v=kvDNeFmxftI&utm)**
+    - Guide on creating an MCP server, including architecture, setup, and testing.
+
+**[How to Set Up Model Context Protocol (MCP) with Claude AI](https://www.youtube.com/watch?v=l3vwwkmZN9M&utm)**
+    - First part of a series covering MCP setup with Claude AI.
+
+**[Model Context Protocol from Claude - Open-Source Real-Time Data Integration](https://www.youtube.com/watch?v=hGJQMbpsTi4&utm)**
+    - Overview of MCP’s real-time data integration capabilities.
+
+**[Building Agents with Model Context Protocol - Full Workshop with Mahesh Murag of Anthropic](https://www.youtube.com/watch?v=kQmXtrmQ5Zg)**
+    - Recorded live at workshop day from the AI Engineer Summit 2025 in NY
 
 
 ## Project Components
