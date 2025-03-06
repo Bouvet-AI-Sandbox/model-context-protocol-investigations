@@ -30,4 +30,4 @@ set -a
 
 ### GitHub - Bouvet user activity with Azure applicaton insight
 [Bouvet user activity with Azure applicaton insight](https://github.com/Bouvet-AI-Sandbox/mcp-bug-triage/tree/main/mcp-server-app-insight)
-`claude mcp add user-activity -e APPLICATION_INSIGHT_APP_ID=$APPLICATION_INSIGHT_APP_ID -e APPLICATION_INSIGHT_API_KEY=$APPLICATION_INSIGHT_API_KEY -- mcp run /workspaces/mcp-bug-triage/mcp-server-app-insight/server.py --transport stdin`
+`claude mcp add user-activity -e APPLICATION_INSIGHT_APP_ID=$APPLICATION_INSIGHT_APP_ID -e APPLICATION_INSIGHT_API_KEY=$APPLICATION_INSIGHT_API_KEY -- mcp run /workspaces/mcp-bug-triage/mcp-server-app-insight/server.py --transport stdio`
