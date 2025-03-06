@@ -181,7 +181,7 @@ Run it through `npx @modelcontextprotocol/inspector`.
     - Recorded live at workshop day from the AI Engineer Summit 2025 in NY
 
 
-## Project Components
+## Repository components
 
 ### [App GitHub Issues](./app-github-issues/)
 A Python application for retrieving GitHub issues and using LLMs to suggest solutions. 
@@ -194,12 +194,6 @@ A tool for generating test data for Azure Application Insights.
 - Creates simulated web requests with various status codes and response times
 - Logs errors and exceptions
 - Configurable through command line arguments
-
-### [App Insight Query for User](./app-insight-query-for-user/)
-A simple Python utility to query Azure Application Insights for user activity.
-- Retrieves data for a specific user from Application Insights
-- Uses a predefined KQL query
-- Accessible via REST API
 
 ### [MCP Client: Claude Code](./mcp-client-claude-code/)
 Implementation of a client using Claude Code (Anthropic's command-line tool).
