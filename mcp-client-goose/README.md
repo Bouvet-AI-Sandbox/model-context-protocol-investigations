@@ -27,6 +27,7 @@ set -a
 ### mcp-server-app-insight
 `goose configure`
 
+```
 This will update your existing config file
   if you prefer, you can edit it directly at /home/vscode/.config/goose/config.yaml
 
@@ -46,10 +47,12 @@ This will update your existing config file
 │
 ◇  Please set the timeout for this tool (in secs):
 │  300
+```
 
 ### mcp-server-github
 `goose configure`
 
+```
 This will update your existing config file
   if you prefer, you can edit it directly at /home/vscode/.config/goose/config.yaml
 
@@ -81,11 +84,10 @@ This will update your existing config file
 │
 ◇  Add another environment variable?
 │  No
+```
 
 # Run
 `goose session`
-
-
 
 ### Attempt at secure storage in docker devcontainer - SKIP THIS!
 `sudo apt-get update && sudo apt-get install -y dbus dbus-x11 libdbus-1-3 gnome-keyring`
