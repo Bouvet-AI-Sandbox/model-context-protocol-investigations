@@ -53,7 +53,7 @@ def generate_web_request(user_id="kjarisk"):
 
         if status == 500:
             try:
-                raise ValueError("Simulated error for logging to Application Insights exceptions table")
+                raise ValueError("EX-627 - Unexpected exception when verifying user role access to engine")
             except Exception as e:
                     span.record_exception(e)
         elif status == 400: 
@@ -67,7 +67,7 @@ def generate_web_request(user_id="kjarisk"):
 # Function to deliberately generate and log an exception for testing
 def generate_exception():
     try:
-        raise ValueError("Simulated error for logging to Application Insights exceptions table")
+        raise ValueError("EX-627 - Unexpected exception when verifying user role access to engine")
     except Exception as e:
         logger.error("Caught exception in generate_exception", exc_info=True)
         with tracer.start_as_current_span("logged_exception", kind=SpanKind.INTERNAL) as span:
