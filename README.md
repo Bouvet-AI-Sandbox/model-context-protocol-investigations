@@ -28,6 +28,11 @@ Example use cases:
 - Add additional document based context (for example through establishing MCP server on top of [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/overview-major-services))
 - Add Architecture Decision Record  (ADR) context (for example through establishing MCP server on websites containing ADRs at corporate, portfolio or solution level))
 
+The video below is showing a bug triage with the combination of MCP [GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github),  [mcp-server-app-insight](./mcp-server-app-insight/) and [memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
+[![MCP demonstration](https://img.youtube.com/vi/afS8B1zdMRI/maxresdefault.jpg)](https://youtu.be/afS8B1zdMRI)
+
+
+
 ### MCP Servers
 MCP servers can provide:
 - [Tools](https://modelcontextprotocol.io/docs/concepts/tools) - This is the core functionality and provides a set of function call the LLM used by the MCP client can choose to use
