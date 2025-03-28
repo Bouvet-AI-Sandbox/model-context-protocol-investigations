@@ -184,6 +184,33 @@ Demonstration of the MCP client [Codename Goose ](https://block.github.io/goose/
 
 It's independent of the actual LLMs used and compatible with our requirements related to information classification and data handling.
 
+## MCP Servers relevant for AI in SDLC
+
+This list provides an example of MCP servers relevant for the Software Delivery Lifecycle: 
+
+- GitHub - https://github.com/modelcontextprotocol/servers/tree/main/src/github
+- Slack - https://github.com/modelcontextprotocol/servers/tree/main/src/slack
+- Memory - https://github.com/modelcontextprotocol/servers/tree/main/src/memory
+- Whois - https://glama.ai/mcp/servers/@bharathvaj-ganesan/whois-mcp
+- MCP remote - https://www.npmjs.com/package/mcp-remote?activeTab=readme
+- Time - https://github.com/modelcontextprotocol/servers/tree/HEAD/src/time
+- Sequentialthinking - https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
+- Browser tools - https://github.com/AgentDeskAI/browser-tools-mcp
+- Architect - https://github.com/squirrelogic/mcp-architect
+- Excel - https://github.com/haris-musa/excel-mcp-server
+- GitHub Support Assistant - https://github.com/Jake-Mok-Nelson/mcp-find-similar-github-issues
+- Neo4J - https://github.com/da-okazaki/mcp-neo4j-server
+- Prompts - https://github.com/sparesparrow/mcp-prompts
+- RFTM - https://github.com/ryanjoachim/mcp-rtfm
+- Youtube transcript - https://github.com/sinco-lab/mcp-youtube-transcript
+- Toggl - https://github.com/wolkwork/toggl-mcp
+- Postman - https://github.com/delano/postman-mcp-server
+- Dbhub - https://github.com/bytebase/dbhub
+- Puppeteer - https://github.com/modelcontextprotocol/servers/tree/HEAD/src/puppeteer
+- Grafana - https://github.com/grafana/mcp-grafana
+- Office - https://github.com/microsoft/semanticworkbench/tree/1479ab09993070fc1e825c1016091e82a62dd138/mcp-servers/mcp-server-office
+
+
 
 ## Reference videos - Tutorials & deep dives
 
