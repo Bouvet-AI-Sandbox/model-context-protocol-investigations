@@ -3,7 +3,7 @@
 ## About MCP (Model Context Protocol)
 
 The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to Large Language Models (LLMs). MCP provides a standardized way to connect AI models to different data sources and tools.
-It was [introduced by Anthropic in November 2024](https://www.anthropic.com/news/model-context-protocol) and has seen quick adoption in the open source community. Anthropic is in [dialog with other foundational AI companies](https://youtu.be/kQmXtrmQ5Zg?si=pYwsJmTo7DPKiP3t&t=5310) such as OpenAI and [GitHub Copilot is evaluating it](https://github.com/microsoft/vscode-copilot-release/issues/5004).
+It was [introduced by Anthropic in November 2024](https://www.anthropic.com/news/model-context-protocol) and has seen quick adoption in the open source community. Recently, we've learned [GitHub CoPilot in VS Code is working on support](https://github.com/microsoft/vscode/labels/chat-mcp) and [OpenAI has announced](https://x.com/sama/status/1904957253456941061) they will adopt the standard. 
 
 MCP follows a client-server architecture where:
 - **MCP client**: Different types such as LLM chat clients, Code copilots in IDEs and agent frameworks
