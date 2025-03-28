@@ -31,7 +31,8 @@ Example use cases:
 The video below is showing a bug triage with the combination of MCP [GitHub MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github),  [mcp-server-app-insight](./mcp-server-app-insight/) and [memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
 [![MCP demonstration](https://img.youtube.com/vi/afS8B1zdMRI/maxresdefault.jpg)](https://youtu.be/afS8B1zdMRI)
 
-
+MCP has had an amazing adoption and has in March 2025 become a de-facto standard. 
+The article [Why MCP Won](https://www.latent.space/p/why-mcp-won) explains a lot of the background for this. After this was published [GitHub CoPilot in VS Code is working on support](https://github.com/microsoft/vscode/labels/chat-mcp) and [OpenAI has announced](https://x.com/sama/status/1904957253456941061)  they will adopt the standard. 
 
 ### MCP Servers
 MCP servers can provide:
@@ -142,7 +143,7 @@ Additionally, the MCP clients can provide:
 
 We've investigated the following MCP clients:
 - LLM chat clients - [Codename Goose](https://block.github.io/goose/) and [LibreChat](https://www.librechat.ai/docs/configuration/librechat_yaml/object_structure/mcp_servers)
-- Code copilots in IDEs -  [Cline](https://github.com/cline/cline), [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview)
+- Code copilots in IDEs -  [Cline](https://github.com/cline/cline), [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) and GitHub CoPilot (VS Code insiders edition
 - Agent frameworks - Lanchain (through [langchain-mcp-adapters](https://github.com/langchain-ai/langchain-mcp-adapters))
 
 ### MCP Inspector
