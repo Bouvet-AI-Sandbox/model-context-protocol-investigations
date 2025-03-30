@@ -1,0 +1,61 @@
+{
+    "inputs": [
+        {
+            "id": "github-token",
+            "type": "promptString",
+            "password": true,
+            "description": "MCP: GitHub personal access token"
+        },
+        {
+            "id": "neo4j-password",
+            "type": "promptString",
+            "password": true,
+            "description": "MCP: Password for Neo4J Graph database"
+        },        
+    ],
+    "servers": {
+        "memory": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory@0.6.2"
+            ]
+        },
+        "sequential-thinking": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking@0.6.2"
+            ]
+        },
+        "github": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-github@2025.3.28"
+            ],
+            "env": {
+                "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github-token}"
+            }
+        },
+        "time": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-time@0.6.2",
+                "--local-timezone=Europe/Oslo"
+            ]
+        },
+        "neo4j-graph-database": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@alanse/mcp-neo4j-server@0.1.1"
+            ],
+            "env": {
+                "NEO4J_URI": "bolt://localhost:7687",
+                "NEO4J_USERNAME": "neo4j",
+                "NEO4J_PASSWORD": "${input:neo4j-password}"
+              }            
+        },        
+    }
+}
