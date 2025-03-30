@@ -45,17 +45,26 @@
                 "--local-timezone=Europe/Oslo"
             ]
         },
-        "neo4j-graph-database": {
+        "youtube-transcript": {
             "command": "npx",
             "args": [
                 "-y",
-                "@alanse/mcp-neo4j-server@0.1.1"
-            ],
-            "env": {
-                "NEO4J_URI": "bolt://localhost:7687",
-                "NEO4J_USERNAME": "neo4j",
-                "NEO4J_PASSWORD": "${input:neo4j-password}"
-              }            
-        },        
+                "@sinco-lab/mcp-youtube-transcript@0.0.7"
+            ]
+        },
+        // Fails, report through https://github.com/microsoft/vscode/issues/245067
+        // "neo4j-graph-database": {
+        //     "command": "npx",
+        //     "args": [
+        //         "-y",
+        //         "@alanse/mcp-neo4j-server@0.1.1"
+        //     ],
+        //     "env": {
+        //         "NEO4J_URI": "bolt://localhost:7687",
+        //         "NEO4J_USERNAME": "neo4j",
+        //         "NEO4J_PASSWORD": "${input:neo4j-password}"
+        //       }            
+        // }, 
+        
     }
 }
