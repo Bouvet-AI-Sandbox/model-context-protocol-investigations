@@ -11,12 +11,12 @@ from pydantic import Field
 load_dotenv()
 
 # Get Application Insights credentials
-SLACK_WORKFLOW_SECRET_URI = os.getenv("SLACK_WORKFLOW_SECRET_URI")
+SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI = os.getenv("SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI")
 MY_SLACK_MEMBER_ID = os.getenv("MY_SLACK_MEMBER_ID")
 
 # Validate environment variables
-if not SLACK_WORKFLOW_SECRET_URI or not MY_SLACK_MEMBER_ID:
-    raise ValueError("SLACK_WORKFLOW_SECRET_URI and MY_SLACK_MEMBER_ID must be set in .env file")
+if not SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI or not MY_SLACK_MEMBER_ID:
+    raise ValueError("SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI and MY_SLACK_MEMBER_ID must be set in .env file")
 
 # Create an MCP server
 mcp = FastMCP(
@@ -29,13 +29,14 @@ mcp = FastMCP(
 
 @mcp.tool()
 def share_with_team_slack(
-    content: str = Field(description="The content to share with the team slack channel. It could be a quick message or a more technical analysis. Use markdown subset mrkdown from slack and strive for high readability on slack. Emojis are ok to use"), 
+    content: str = Field(description="The content to share with the team slack channel. It could be a quick message or a more technical analysis. Strive for high readability on slack and emojis are ok to use. Markdown syntax such as bold and italic must be avoided as it's not supported in Slack webhook"), 
     ctx: Context = Field(description="MCP context"),
 ) -> Dict[str, Any]:
     """Share content with the team slack channel. 
     The team slack channel is used to communicate with the team members in our delivery for all parts of the Software Delivery Lifecycle. 
     The team has solid technical knowledge and understanding.
-    Use short precise content with high readability on slack (slack uses mrkdown which is a subset of markdown)
+    Do not add any additional information such as inferred urgency or importance. 
+    Use short precise content with high readability on slack (emojis are ok to use. Markdown syntax such as bold and italic must be avoided as it's not supported in Slack webhook)
     """
     return _slack_workflow_call(content, ctx)
 
@@ -43,7 +44,7 @@ def share_with_team_slack(
 def _slack_workflow_call(content: str, ctx: Context):
 
     # Construct the REST API URL
-    url = SLACK_WORKFLOW_SECRET_URI
+    url = SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI
 
     ctx.debug(f"Preparing request to slack webhook")
 
