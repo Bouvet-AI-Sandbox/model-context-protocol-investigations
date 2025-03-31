@@ -12,3 +12,4 @@ mcp-client-claude-code/.env
 mcp-client-goose/.env
 mcp-server-azure-devops/.env
 .devcontainer/devcontainer_values.json
+mcp-server-share-with-team-slack/.env
