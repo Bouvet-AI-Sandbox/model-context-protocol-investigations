@@ -11,7 +11,13 @@
             "type": "promptString",
             "password": true,
             "description": "MCP: Password for Neo4J Graph database"
-        },        
+        },
+        {
+            "id": "slack_workflow_secret_web_request_uri",
+            "type": "promptString",
+            "password": true,
+            "description": "MCP: Slack workflow secret web request URI"
+        },                  
     ],
     "servers": {
         "memory": {
@@ -52,6 +58,17 @@
                 "@sinco-lab/mcp-youtube-transcript@0.0.7"
             ]
         },
+        "share-with-team": {
+            "command": "mcp",
+            "args": [
+                "run",
+                "model-context-protocol-investigations/mcp-server-share-with-team-slack/server.py"
+            ], 
+            "env": {
+                "SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI": "${input:slack_workflow_secret_web_request_uri}",
+                "MY_SLACK_MEMBER_ID":"U024XURJ4"
+            }
+        },        
         // Fails, report through https://github.com/microsoft/vscode/issues/245067
         // "neo4j-graph-database": {
         //     "command": "npx",
