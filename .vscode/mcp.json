@@ -68,7 +68,14 @@
                 "SLACK_WORKFLOW_SECRET_WEB_REQUEST_URI": "${input:slack_workflow_secret_web_request_uri}",
                 "MY_SLACK_MEMBER_ID":"U024XURJ4"
             }
-        },        
+        },
+        "sdlc-artifacts": {
+            "command": "mcp",
+            "args": [
+                "run",
+                "model-context-protocol-investigations/mcp-server-sdlc-artifacts/server.py"
+            ]
+        },                   
         // Fails, report through https://github.com/microsoft/vscode/issues/245067
         // "neo4j-graph-database": {
         //     "command": "npx",
