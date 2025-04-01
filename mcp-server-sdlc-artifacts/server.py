@@ -21,7 +21,8 @@ mcp = FastMCP(
 template_file_map = {
     "decision-log": "decision-log.md",
     "incident-report-postmortem": "incident-report-postmortem.md",
-    "user-story": "user-story.md"
+    "user-story": "user-story.md",
+    "release-notes": "release-notes.md"
 }
     
 
@@ -53,6 +54,16 @@ def get_template_user_story(
     """Get the template used for user stories in the Software delivery lifecycle of this IT delivery.
     The user story template is used to capture the requirements and acceptance criteria for a feature or functionality.
     It is used to communicate the needs of the users and stakeholders to the development team.
+    """
+    return _read_template("user-story", ctx)
+
+@mcp.tool()
+def get_template_release_notes(
+    ctx: Context = Field(description="MCP context"),
+) -> Dict[str, Any]:
+    """Get the template used for release notes in the Software delivery lifecycle of this IT delivery.
+    The release notes template is used to capture the details of a release, including the features, bug fixes, and known issues.
+    The release notes will be based on release please and details are in the CHANGELOG.md file.
     """
     return _read_template("user-story", ctx)    
 
