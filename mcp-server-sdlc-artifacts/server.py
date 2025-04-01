@@ -65,7 +65,7 @@ def get_template_release_notes(
     The release notes template is used to capture the details of a release, including the features, bug fixes, and known issues.
     The release notes will be based on release please and details are in the CHANGELOG.md file.
     """
-    return _read_template("user-story", ctx)    
+    return _read_template("release-notes", ctx)    
 
 def _read_template(template_id: str, ctx: Context):   
     ctx.debug(f"Preparing reading template {template_id}")  
