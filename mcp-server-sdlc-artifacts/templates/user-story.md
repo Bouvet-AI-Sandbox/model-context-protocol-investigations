@@ -1,26 +1,51 @@
-[
-The user story should have a reason to exist: what do I need as the user described in the summary?
-This part details any detail that could not be passed by the summary.
-]
+# User Story: [Title]
 
+## Story ID: [Project Code]-[Number]
 
-### Acceptance Criteria
+## Priority: [High/Medium/Low]  |  Business Value: [1-10]  |  Estimate: [Story Points/Hours]
 
-1. [If I do A.]
-1. [B should happen.]
+## User Story
+As a [role/persona],
+I want [feature/action],
+So that [benefit/value].
 
-[
-Also, here are a few points that need to be addressed:
+## Details
+[Additional details that couldn't fit in the user story format]
 
-1. Constraint 1;
-1. Constraint 2;
-1. Constraint 3.
-]
+## Acceptance Criteria
+1. **Given** [initial context]
+   **When** [action occurs]
+   **Then** [observable outcome]
 
+2. **Given** [initial context]
+   **When** [action occurs]
+   **Then** [observable outcome]
 
-### Notes
+## Dependencies and Constraints
+1. Dependencies:
+   - [Dependent on user story X]
+   - [External system Y must be available]
 
-[Some complementary notes if necessary:]
+2. Constraints:
+   - [Technical constraint]
+   - [Business constraint]
+   - [Time constraint]
 
-* > Here goes a quote from an email
-* Here goes whatever useful information can exist…
+## Definition of Done Reference
+- [ ] Meets all acceptance criteria
+- [ ] Code reviewed
+- [ ] Tests written and passing
+- [ ] Documentation updated
+
+## Notes
+### Technical Notes
+- [Architecture considerations]
+- [Implementation suggestions]
+
+### UI/UX Considerations
+- [Design notes]
+- [User interaction patterns]
+
+### Testing Notes
+- [Special testing requirements]
+- [Edge cases to consider]
